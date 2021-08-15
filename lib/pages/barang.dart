@@ -48,6 +48,7 @@ class _BarangState extends State<Barang> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: CustomColors.primaryColor,
         centerTitle: true,
         title: Text(
           "Items",
@@ -59,7 +60,7 @@ class _BarangState extends State<Barang> {
       body: SafeArea(
         child: Container(
           // color: Colors.red,
-          padding: EdgeInsets.fromLTRB(5, 15, 5, 15),
+          // padding: EdgeInsets.fromLTRB(5, 15, 5, 15),
           child: StreamBuilder(
             stream: FirebaseFirestore.instance.collection('items').where('email', isEqualTo: username).snapshots(),
             builder:
@@ -77,6 +78,7 @@ class _BarangState extends State<Barang> {
                   );
                 }
                 return GridView.builder(
+                  padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: MediaQuery.of(context).size.width /

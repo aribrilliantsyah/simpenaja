@@ -1,17 +1,22 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:eminovel/helpers/custom_colors.dart';
 import 'package:eminovel/models/item.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:ionicons/ionicons.dart';
 
 class FormBarang extends StatefulWidget {
   final Item? item;
   final String? id;
   final String? email;
 
-  FormBarang({Key? key, required this.item, required this.id, required this.email})
+  FormBarang(
+      {Key? key, required this.item, required this.id, required this.email})
       : super(key: key);
 
   @override
@@ -19,6 +24,7 @@ class FormBarang extends StatefulWidget {
 }
 
 class _FormBarangState extends State<FormBarang> {
+  String _scanBarcode = 'Unknown';
   TextEditingController barcodeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController stockController = TextEditingController();
@@ -42,24 +48,38 @@ class _FormBarangState extends State<FormBarang> {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: CustomColors.primaryColor,
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        centerTitle: true,
+        title: Text(
+          "Form Item",
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                height: 50,
-                child: Center(
-                  child: Text(
-                    'Data Item',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ),
+              // Container(
+              //   height: 50,
+              //   color: CustomColors.primaryColor,
+              //   child: Center(
+              //     child: Text(
+              //       'Data Item',
+              //       style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 20,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Divider(
                 height: 0,
                 color: Colors.black,
@@ -100,6 +120,12 @@ class _FormBarangState extends State<FormBarang> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Barcode',
+                    suffixIcon: IconButton(
+                      icon: Icon(Ionicons.barcode),
+                      onPressed: () => {
+                        scanBarcodeNormal()
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -150,7 +176,8 @@ class _FormBarangState extends State<FormBarang> {
                       ),
                     ),
                     onPressed: () async {
-                      String currentMillis = 'T' + DateTime.now().millisecondsSinceEpoch.toString();
+                      String currentMillis = 'T' +
+                          DateTime.now().millisecondsSinceEpoch.toString();
                       Item item = Item(
                         id: widget.item == null && widget.id == null
                             ? currentMillis
@@ -181,39 +208,39 @@ class _FormBarangState extends State<FormBarang> {
                   ),
                 ),
               ),
-              widget.item == null && widget.id == null ? 
-              SizedBox() : 
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: SizedBox(
-                  height: 50,
-                  child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.red),
-                    ),
-                    child: Text(
-                      'Delete',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
+              widget.item == null && widget.id == null
+                  ? SizedBox()
+                  : Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: SizedBox(
+                        height: 50,
+                        child: TextButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.red),
+                          ),
+                          child: Text(
+                            'Delete',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                            ),
+                          ),
+                          onPressed: () {
+                            FirebaseStorage.instance
+                                .refFromURL(widget.item!.image.toString())
+                                .delete()
+                                .then((result) {
+                              FirebaseFirestore.instance
+                                  .collection('items')
+                                  .doc(widget.id)
+                                  .delete();
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
                       ),
                     ),
-                    onPressed: () {
-                      FirebaseStorage.instance
-                        .refFromURL(widget.item!.image.toString())
-                        .delete()
-                        .then((result) {
-                          FirebaseFirestore.instance
-                            .collection('items')
-                            .doc(widget.id)
-                            .delete();
-                          Navigator.pop(context);
-                      });
-                    },
-                  ),
-                ),
-              ),
             ],
           ),
         ),
@@ -235,9 +262,12 @@ class _FormBarangState extends State<FormBarang> {
       source: ImageSource.gallery,
       imageQuality: 50,
     );
-    setState(() {
-      imageFile = File(imgGallery!.path);
-    });
+
+    if(imgGallery!.path.toString() != null){
+      setState(() {
+        imageFile = File(imgGallery!.path);
+      });
+    }
   }
 
   Future<void> imgFromCamera() async {
@@ -245,9 +275,12 @@ class _FormBarangState extends State<FormBarang> {
       source: ImageSource.camera,
       imageQuality: 50,
     );
-    setState(() {
-      imageFile = File(imgCamera!.path);
-    });
+
+    if(imgCamera!.path.toString() != null){
+      setState(() {
+        imageFile = File(imgCamera!.path);
+      });
+    }
   }
 
   void getImage(context) {
@@ -278,5 +311,23 @@ class _FormBarangState extends State<FormBarang> {
         );
       },
     );
+  }
+
+  Future<void> scanBarcodeNormal() async {
+    String barcodeScanRes;
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      print(barcodeScanRes);
+      barcodeController.text = barcodeScanRes;
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
+
+    if (!mounted) return;
+
+    setState(() {
+      _scanBarcode = barcodeScanRes;
+    });
   }
 }

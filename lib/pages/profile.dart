@@ -1,4 +1,5 @@
 import 'package:ai_awesome_message/ai_awesome_message.dart';
+import 'package:eminovel/helpers/custom_colors.dart';
 import 'package:eminovel/pages/login.dart';
 import 'package:eminovel/pages/sign_in_screen.dart';
 import 'package:eminovel/utils/authentication.dart';
@@ -73,6 +74,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: CustomColors.primaryColor,
         centerTitle: true,
         title: Text(
           "Setting",

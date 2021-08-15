@@ -63,7 +63,7 @@ class _SplashScreen extends State<SplashScreen>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "©TIFK CID B 2021",
+                    "©KELOMPOK 1 - 2021",
                     style: TextStyle(
                       fontSize: 12.0,
                       color: Colors.grey,

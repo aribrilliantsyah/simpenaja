@@ -64,7 +64,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
     return Scaffold(
       body: TabBarView(
         children: [
-          Home(storage: storage),
+          Home(storage: storage, tabController: tabController),
           Barang(storage: storage),
           // Notif(),
           Profile(storage: storage)
@@ -96,7 +96,7 @@ class _AppState extends State<App> with SingleTickerProviderStateMixin {
               margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 2.0),
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
-                color: rei_primaryColor,
+                color: CustomColors.primaryColor,
                 borderRadius: new BorderRadius.all(Radius.circular(3)),
               ),
             ),

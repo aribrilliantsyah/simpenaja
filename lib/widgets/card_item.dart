@@ -18,7 +18,7 @@ class _CardItemState extends State<CardItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
+      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -44,6 +44,7 @@ class _CardItemState extends State<CardItem> {
               ),
             ),
           ),
+          Padding(padding: EdgeInsets.only(top: 5)),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Text(
