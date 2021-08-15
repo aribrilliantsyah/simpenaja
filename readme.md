@@ -3,17 +3,17 @@
 Application Build With Flutter
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_1.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_2.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_3.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_4.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_5.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_6.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_7.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_8.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_9.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_10.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/eminovel/main/ss/simpenaja_11.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_1.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_2.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_3.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_4.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_5.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_6.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_7.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_8.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_9.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_10.jpg" width="350px">
+<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/main/ss/simpenaja_11.jpg" width="350px">
 
 ## Video
 
