@@ -6,7 +6,7 @@ Application Build With Flutter
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_1.jpg" width="350px">
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_2.jpg" width="350px">
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_3.jpg" width="350px">
-<img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_4.jpg" width="350px">
+<!-- <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_4.jpg" width="350px"> -->
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_5.jpg" width="350px">
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_6.jpg" width="350px">
 <img src="https://raw.githubusercontent.com/aribrilliantsyah/simpenaja/master/ss/simpenaja_7.jpg" width="350px">
